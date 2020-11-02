@@ -75,5 +75,28 @@
           });      
         });
     });
+      describe("By movie title and genre" ,() => {
+        it("should display movies with the specified title and genre", () => {
+          const searchString = "m";
+          const matchingMovies = filterByTitle(movies, searchString);
+          cy.get("input").clear().type(searchString);
+          cy.get(".card").should("have.length", matchingMovies.length);
+          cy.get(".card").each(($card, index) => {
+            cy.wrap($card)
+            .find(".card-title")
+            .should("have.text", matchingMovies[index].title);
+          })
+          const selectedGenreId = 35;
+          const selectedGenreText = "Comedy";
+          const matchMovies = filterByGenre(matchingMovies, selectedGenreId);
+          cy.get("select").select(selectedGenreText); 
+          cy.get(".card").should("have.length", matchMovies.length);
+          cy.get(".card").each(($card, index) => {
+            cy.wrap($card)
+              .find(".card-title")
+              .should("have.text", matchMovies[index].title);
+           })           
+          });   
+      });
     })
   });
