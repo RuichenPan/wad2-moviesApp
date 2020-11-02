@@ -25,6 +25,7 @@ describe("Movie Details Page", () => {
       .then((movieDetails) => {
         movie = movieDetails;
         return movieDetails.id;
+        
       })
   });
   beforeEach(() => {
@@ -51,5 +52,10 @@ describe("Movie Details Page", () => {
       .parent()
       .should("have.attr", "href")
       .should("include", movie.homepage);
+  });
+  it("should display the Image tag with the appropriate src attribute", () => {
+    cy.get("img")
+      .should("have.attr", "src")
+      .should("include", movie.poster_path);
   });
 });
