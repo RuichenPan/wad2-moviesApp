@@ -11,7 +11,7 @@ import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
-
+import SiteHeader from "../src/components/siteHeader"
 const sample = {
   adult: false,
   backdrop_path: "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
@@ -127,6 +127,7 @@ storiesOf("Home Page/Header", module).add("default", () => (
   <MoviesHeader title="All Movies" numMovies={10} />
 ));
 
+
 storiesOf("Home Page/MovieList", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
@@ -152,3 +153,11 @@ storiesOf("Movie Details Page/MovieHeader", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <MovieHeader movie={sample} />);
+
+storiesOf("Home Page/SiteHeader", module)
+  .addDecorator(story => (
+  <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+  <SiteHeader />
+  ));
