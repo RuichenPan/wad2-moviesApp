@@ -21,7 +21,8 @@ describe("Top Rated Page ", () => {
       })
   })
   beforeEach(() => {
-    cy.visit("/movies/toprated")
+    cy.visit("/")
+    cy.contains("Top Rated").click()
   });
 
   describe("Base tests", () => {
