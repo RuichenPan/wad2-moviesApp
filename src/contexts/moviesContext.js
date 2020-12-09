@@ -42,13 +42,12 @@ const reducer = (state, action) => {
 };
 
 const MoviesContextProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: []});
+  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: [], similar: []});
 
   const addToFavorites = (movieId) => {
     const index = state.movies.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
   };
-
   const addToWatchList = (movieId) => {
     const index = state.upcoming.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-watchlist", payload: { upcoming: state.upcoming[index] } });
@@ -88,6 +87,7 @@ const MoviesContextProvider = (props) => {
         addToFavorites: addToFavorites,
         addReview: addReview,
         addToWatchList:addToWatchList,
+        
       }}
     >
       {props.children}
