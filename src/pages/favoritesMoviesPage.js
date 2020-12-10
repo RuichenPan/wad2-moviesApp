@@ -16,9 +16,15 @@ const FavoriteMoviesPage = props => {
       title={"Favorite Movies"}
       action={movie => <AddReviewButton movie={movie} />}
     />:
+    <>
+    <MovieListPageTemplate
+      movies={favorites}
+      title={"Favorite Movies"}
+      action={movie => <AddReviewButton movie={movie} />}
+    />
     <p>Sorry!You have not added any movie</p>
 
-    
+    </>
     }
   </>
   );
