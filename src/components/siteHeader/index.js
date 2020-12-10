@@ -63,6 +63,11 @@ const SiteHeader = () => {
               Popular Actors
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/actors/favorites">
+              Favorite Actors
+            </Link>
+          </li>
         </ul>
       </nav>
     </nav>
