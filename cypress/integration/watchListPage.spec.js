@@ -27,7 +27,6 @@ describe("Watch List Page ", () => {
   });
   describe("Button test", () => {
     it("button should add movies to watch list page", () => {
-      cy.get(".card").should("have.length",0);
       cy.get(".card").get(".btn-primary").eq(3).click();
       cy.contains("Watch List").click()
       cy.get(".card").should("have.length",1);
