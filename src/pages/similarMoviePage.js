@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 // import {MoviesContext} from '../contexts/moviesContext'
 import { withRouter } from "react-router-dom";
 import PageTemplate from '../components/templateMovieListPage'
@@ -8,9 +8,12 @@ const SimilarPage = (props) => {
   const { id } = props.match.params;
   // const context = useContext(MoviesContext);
   let [movies,SetMovies]=useState([])
-  getSimilarMovies(id).then((res)=>{
-    SetMovies(res)
-  })
+  useEffect(() => {
+    getSimilarMovies(id).then((res)=>{
+      SetMovies(res)
+    })
+  }, [])
+  
   // movies=context.movies.filter((m) => {  
   //   return !("favorite" in m);
   // });
