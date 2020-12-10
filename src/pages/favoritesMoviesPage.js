@@ -6,12 +6,21 @@ import {MoviesContext} from '../contexts/moviesContext'
 const FavoriteMoviesPage = props => {
   const context = useContext(MoviesContext);
   const favorites = context.movies.filter( m => m.favorite )
+  const movies = favorites;
   return (
+    <>
+    {
+      movies.length!==0 ?
     <MovieListPageTemplate
       movies={favorites}
       title={"Favorite Movies"}
       action={movie => <AddReviewButton movie={movie} />}
-    />
+    />:
+    <p>Sorry!You have not added any movie</p>
+
+    
+    }
+  </>
   );
 };
 
