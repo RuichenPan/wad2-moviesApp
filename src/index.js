@@ -14,6 +14,8 @@ import AddMovieReviewPage from './pages/addMovieReviewPage'
 import TopRatedPage from './pages/topRatedPage';
 import similarMovie from './pages/similarMoviePage';
 import WatchListPage from './pages/watchListPage';
+import RecommendPage from './pages/RecommendPage';
+import NowPlayingMovisPage from './pages/NowPlayingPage';
 const App = () => {
   return (
     <BrowserRouter>
@@ -28,6 +30,8 @@ const App = () => {
           <Route exact path="/reviews/:id" component={MovieReviewPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route exact path="/movies/watchList" component={WatchListPage} />
+          <Route exact path="/movies/recommendMovie/:id" component={RecommendPage} />
+          <Route exact path="/movies/nowplaying" component={NowPlayingMovisPage}/>
           <Route path="/movies/Upcoming" component={UpcomingPage} />
           <Route path="/movies/toprated" component={TopRatedPage} />
           <Route exact path="/movies/similarMovie/:id" component={similarMovie}/>
