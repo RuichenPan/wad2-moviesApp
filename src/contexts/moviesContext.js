@@ -54,6 +54,7 @@ const MoviesContextProvider = (props) => {
     const index = state.upcoming.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-watchlist", payload: { upcoming: state.upcoming[index] } });
   };
+  
 
   const addReview = (movie, review) => {
     dispatch({ type: "add-review", payload: { movie, review } });
