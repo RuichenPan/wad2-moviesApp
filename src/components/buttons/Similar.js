@@ -9,7 +9,7 @@ const SimilarButton = ({ movie }) => {
       pathname: `/movies/similarMovie/${movie.id}`
     }}
   >
-    Similar
+    Check Similar Page
   </Link>)
 };
 

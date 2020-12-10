@@ -29,7 +29,7 @@ const App = () => {
           <Route path="/movies/Upcoming" component={UpcomingPage} />
           <Route path="/movies/toprated" component={TopRatedPage} />
           <Route exact path="/movies/similarMovie/:id" component={similarMovie}/>
-          <Route exact path="/movies/:id" component={MoviePage} />
+          <Route excat path="/movies/:id" component={MoviePage} />
           
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />

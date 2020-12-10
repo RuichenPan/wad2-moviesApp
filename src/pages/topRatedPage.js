@@ -8,7 +8,6 @@ const MovieListPage = () => {
   const movies = context.topRated.filter((m) => {  
     return !("favorite" in m);
   });
-
   return (
     <PageTemplate
       title="Top Rated Movies"
