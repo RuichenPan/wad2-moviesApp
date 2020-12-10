@@ -18,6 +18,7 @@ const FavoriteMoviesPage = props => {
     />:
     <p>Sorry!You have not added any movie</p>
 
+    
     }
   </>
   );
