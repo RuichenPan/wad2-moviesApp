@@ -54,6 +54,9 @@ exercise_job:
 
 e2etest:    
   stage: test
+  only:
+    - master
+    - staging
   before_script:
     - npm install -g http-server
     - npm install cypress

@@ -10,12 +10,15 @@ import SiteHeader from './components/siteHeader';
 import UpcomingPage from './pages/UpcomingPage'
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
+import ActorsContextProvider from "./contexts/actorsContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import TopRatedPage from './pages/topRatedPage';
 import similarMovie from './pages/similarMoviePage';
 import WatchListPage from './pages/watchListPage';
 import RecommendPage from './pages/RecommendPage';
 import NowPlayingMovisPage from './pages/NowPlayingPage';
+import PopularActorsPage from './pages/PopularActorPage';
+import LikeActors from './pages/ILikePage';
 const App = () => {
   return (
     <BrowserRouter>
@@ -24,6 +27,7 @@ const App = () => {
         <div className="container-fluid">
           <MoviesContextProvider>
             <GenresContextProvider>    {/* NEW */}
+            <ActorsContextProvider>
             <Switch>
 
           <Route exact path="/reviews/form" component={AddMovieReviewPage} />
@@ -32,6 +36,8 @@ const App = () => {
           <Route exact path="/movies/watchList" component={WatchListPage} />
           <Route exact path="/movies/recommendMovie/:id" component={RecommendPage} />
           <Route exact path="/movies/nowplaying" component={NowPlayingMovisPage}/>
+          <Route exact path="/actors" component={PopularActorsPage}/>
+          <Route exact path="/actors/favorites" component={LikeActors}/>
           <Route path="/movies/Upcoming" component={UpcomingPage} />
           <Route path="/movies/toprated" component={TopRatedPage} />
           <Route exact path="/movies/similarMovie/:id" component={similarMovie}/>
@@ -39,9 +45,10 @@ const App = () => {
           
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />
-          </Switch>
+            </Switch>
+            </ActorsContextProvider>
             </GenresContextProvider>    {/* NEW */}
-          </MoviesContextProvider>
+            </MoviesContextProvider>
         </div>
       </div>
     </BrowserRouter>
