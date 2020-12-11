@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./actorCard.css";
 import "../../globals/fontawesome";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AddReviewButton from '../buttons/addActorReview'
 
 const ActorCard = ({actor, action}) => {
   return (
@@ -21,17 +21,18 @@ const ActorCard = ({actor, action}) => {
         </Link>
         <div className="card-body">
           <h4 className="card-title ">{actor.name}</h4>
-          <p>
+          {/* <p>
             <FontAwesomeIcon icon={["fas", "calendar"]} />
-            <span> {actor.origin_country}</span>
+            <span> {actor.known_for[0].origin_country===undefined? "unknown": actor.known_for[0].origin_country}</span>
           </p>
           <p>
             <FontAwesomeIcon icon={["fas", "star"]} />
             <span> {actor.vote_average}</span>
-          </p>
+          </p> */}
         </div>
-        <div className="card-footer">
+        <div className="card-footer d-flex">
            {action(actor)}
+            <AddReviewButton actor={actor}/>
         </div>
       </div>
     </div>
