@@ -27,18 +27,18 @@ describe("Favorite Actors Page ", () => {
   });
   describe("Button test", () => {
     it("button should add movies to favorite actors page", () => {
-      cy.get(".card").get(".btn-primary").eq(3).click();
+      cy.get(".card").get(".btn-primary").eq(2).click();
       cy.contains("Favorite Actors").click()
       cy.get(".card").should("have.length",1);
     });
     it("button should remove movies from favorite actors page", () => {
-      cy.get(".card").get(".btn-primary").eq(3).click();
+      cy.get(".card").get(".btn-primary").eq(2).click();
       cy.contains("Favorite Actors").click()
       cy.get(".card").get(".btn-primary").eq(0).click();
       cy.get(".card").should("have.length",0);
     });
     it("button should remove movies from favorite actors page", () => {
-      cy.get(".card").get(".btn-primary").eq(3).click();
+      cy.get(".card").get(".btn-primary").eq(2).click();
       cy.contains("Favorite Actors").click()
       cy.get(".card").get(".btn-primary").eq(0).click();
       cy.contains("Popular Actors").click()

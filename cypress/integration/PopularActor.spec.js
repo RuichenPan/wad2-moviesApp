@@ -28,8 +28,8 @@ describe("Popular Actors Page ", () => {
   });
   describe("Button test", () => {
     it("button should add movies to I Like page", () => {
-      cy.get(".card").get(".btn-primary").eq(3).click();
-      cy.get(".card").get(".btn-primary").eq(5).click();
+      cy.get(".card").get(".btn-primary").eq(2).click();
+      cy.get(".card").get(".btn-primary").eq(4).click();
       cy.get(".card").should("have.length",18);
     });
     
