@@ -20,8 +20,15 @@ import RecommendPage from './pages/RecommendPage';
 import NowPlayingMovisPage from './pages/NowPlayingPage';
 import PopularActorsPage from './pages/PopularActorPage';
 import LikeActors from './pages/ILikePage';
+import { FirebaseAppProvider } from 'reactfire' ;
+import firebaseConfig from './firebaseConfig' ;
+import SignUp from './components/signUp';
+import Login from './components/login';
+import Logout from './components/logout';
+import 'antd/dist/antd.css';
 const App = () => {
   return (
+    < FirebaseAppProvider firebaseConfig = {firebaseConfig} >
     <BrowserRouter>
       <div className="jumbotron">
         <SiteHeader /> 
@@ -43,6 +50,9 @@ const App = () => {
           <Route path="/movies/Upcoming" component={UpcomingPage} />
           <Route path="/movies/toprated" component={TopRatedPage} />
           <Route exact path="/movies/similarMovie/:id" component={similarMovie}/>
+          <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/logout" component={Logout}/>
           <Route path="/movies/:id" component={MoviePage} />
           
           <Route path="/" component={HomePage} />
@@ -54,6 +64,7 @@ const App = () => {
         </div>
       </div>
     </BrowserRouter>
+    </FirebaseAppProvider>
   );
 };
 
