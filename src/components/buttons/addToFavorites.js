@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import {MoviesContext} from "../../contexts/moviesContext";
+import { HeartTwoTone } from '@ant-design/icons'
 
 const AddToFavoriteButton = ({ movie }) => {
   const context = useContext(MoviesContext);
@@ -14,7 +15,7 @@ const AddToFavoriteButton = ({ movie }) => {
       className="btn w-100 btn-primary"
       onClick={handleAddToFavorite}
     >
-      Add to Favorites
+      <HeartTwoTone />
     </button>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import {ActorsContext} from "../../contexts/actorsContext";
-
+import { HeartTwoTone } from '@ant-design/icons'
 const AddToILikeButton = ({ actor }) => {
   const context = useContext(ActorsContext);
 
@@ -11,10 +11,10 @@ const AddToILikeButton = ({ actor }) => {
   return (
     <button
       type="button"
-      className="btn w-100 btn-primary"
+      className="btn w-50 btn-primary"
       onClick={handleAddToILike}
     >
-      Add to I Like
+      <HeartTwoTone />
     </button>
   );
 };
