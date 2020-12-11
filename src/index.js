@@ -12,6 +12,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
 import ActorsContextProvider from "./contexts/actorsContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
+import AddActorReviewPage from './pages/addActorReviewPage'
 import TopRatedPage from './pages/topRatedPage';
 import similarMovie from './pages/similarMoviePage';
 import WatchListPage from './pages/watchListPage';
@@ -31,6 +32,7 @@ const App = () => {
             <Switch>
 
           <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+          <Route exact path="/reviews/actorform" component={AddActorReviewPage} />
           <Route exact path="/reviews/:id" component={MovieReviewPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route exact path="/movies/watchList" component={WatchListPage} />
@@ -41,7 +43,7 @@ const App = () => {
           <Route path="/movies/Upcoming" component={UpcomingPage} />
           <Route path="/movies/toprated" component={TopRatedPage} />
           <Route exact path="/movies/similarMovie/:id" component={similarMovie}/>
-          <Route exact path="/movies/:id" component={MoviePage} />
+          <Route path="/movies/:id" component={MoviePage} />
           
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />

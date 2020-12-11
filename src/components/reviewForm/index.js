@@ -21,7 +21,6 @@ const ReviewForm = ({ movie, history }) => {
           type="text"
           className="form-control"
           placeholder="Author"
-          defaultValue={movie.review ? movie.review.author : ""}
           name="author"
           ref={register({ required: "Author name required" })}
         />
@@ -33,7 +32,6 @@ const ReviewForm = ({ movie, history }) => {
           type="text"
           className="form-control"
           placeholder="Write your review"
-          defaultValue={movie.review ? movie.review.content : ""}
           name="content"
           ref={register({
             required: "No review text",
