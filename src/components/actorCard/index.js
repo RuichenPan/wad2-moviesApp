@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./actorCard.css";
 import "../../globals/fontawesome";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AddReviewButton from '../buttons/addActorReview'
 
 const ActorCard = ({actor, action}) => {
