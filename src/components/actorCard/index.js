@@ -8,7 +8,7 @@ const ActorCard = ({actor, action}) => {
   return (
     <div className="col-sm-3">
       <div className="card  bg-white">
-      <Link to={`/actor/${actor.name}`}>
+      <Link to={`/actor/${actor.id}`}>
         <img
           className="card-img-tag center "
           alt={actor.name}

@@ -3,42 +3,51 @@ import { Link } from "react-router-dom";
 import "../../globals/fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./siteHeader.css";
-import { Menu, Dropdown,message} from 'antd';
-import {UserOutlined } from '@ant-design/icons';
+import { Menu, Dropdown} from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { useUser } from 'reactfire' ;
+import { useFirebaseApp } from 'reactfire' ;
+import 'firebase/auth'
+
 const SiteHeader = () => {
-  function handleMenuClick(e) {
-    message.info('Click on menu item.');
-    console.log('click', e);
+  const user = useUser().data;
+  const firebase = useFirebaseApp();
+ 
+  // Log out function
+  const handleClick = () => {
+    firebase.auth().signOut();
+    alert("Logout！")
   }
+ 
   
   const menu = (
-    <Menu onClick={handleMenuClick}>
-      
-            <Link className="nav-link" to="/signup"> 
-            <Menu.Item key="1" icon={<UserOutlined />}>
+    <Menu>
+    <Menu.Item>
+    <Link className="nav-link" to="/signup"> 
         Sign Up
-            </Menu.Item></Link>
-
-     
-      <Link className="nav-link" to="/login"> 
-      <Menu.Item key="2" icon={<UserOutlined />}>
+        </Link>
+    </Menu.Item>
+    <Menu.Item>
+    <Link className="nav-link" to="/login"> 
         Log In
-      </Menu.Item></Link>
-      <Link className="nav-link" to="/logout">
-      <Menu.Item key="3" icon={<UserOutlined />}>
-        Log Out
-      </Menu.Item></Link>
-    </Menu>
-  );
+        </Link>
+    </Menu.Item>
+    <Menu.Item>
+      <button type="button" onClick={handleClick}>Log Out</button> 
+    </Menu.Item>
+  </Menu>
+);
   return (
     <nav className="navbar  navbar-light fixed-top  bg-dark ">
-                
-            <Dropdown.Button overlay={menu} placement="bottomCenter" icon={<UserOutlined />}>
-            </Dropdown.Button>
-          
+       <Dropdown overlay={menu}>
+
+    <span className="ant-dropdown-link text-primary" onClick={e => e.preventDefault()}>
+      User <DownOutlined />
+    </span>
+  </Dropdown>
       <nav className="navbar-brand text-white">
         <Link className=" text-white" to="/">
-        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"  width="200" height="50" />
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="logo" width="200" height="50" />
         </Link>
       </nav>
       <FontAwesomeIcon
@@ -68,7 +77,7 @@ const SiteHeader = () => {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/favorites">
+            <Link className="nav-link text-white" to={user?"/movies/favorites":"/login"}>
               Favorites
             </Link>
           </li>
@@ -78,7 +87,7 @@ const SiteHeader = () => {
             </Link>
           </li>         
            <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/watchList">
+            <Link className="nav-link text-white" to={user?"/movies/watchList":"/login"}>
               Watch List
             </Link>
           </li>
@@ -93,7 +102,7 @@ const SiteHeader = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/actors/favorites">
+            <Link className="nav-link text-white" to={user?"/actors/favorites":"/login"}>
               Favorite Actors
             </Link>
           </li>

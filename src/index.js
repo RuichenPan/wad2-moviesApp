@@ -5,6 +5,7 @@ import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import HomePage from "./pages/homePage";
 import MoviePage from './pages/movieDetailsPage'
+import ActorPage from './pages/actorDetailsPage'
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
 import UpcomingPage from './pages/UpcomingPage'
@@ -24,7 +25,6 @@ import { FirebaseAppProvider } from 'reactfire' ;
 import firebaseConfig from './firebaseConfig' ;
 import SignUp from './components/signUp';
 import Login from './components/login';
-import Logout from './components/logout';
 import 'antd/dist/antd.css';
 const App = () => {
   return (
@@ -52,8 +52,8 @@ const App = () => {
           <Route exact path="/movies/similarMovie/:id" component={similarMovie}/>
           <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/logout" component={Logout}/>
           <Route path="/movies/:id" component={MoviePage} />
+          <Route exact path="/actor/:id" component={ActorPage} />
           
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />

@@ -4,32 +4,54 @@ import "./actorDetails.css";
 export default ({ actor }) => {
   return (
     <>
+    <ul className="list-group list-group-horizontal">
+    <li key="ruh" className="list-group-item list-group-item-dark">
+      Name:
+    </li>
+    <li key="rut" className="list-group-item ">
+      {actor.name}
+    </li>
+    </ul>
       <ul className="list-group list-group-horizontal">
         <li key="ruh" className="list-group-item list-group-item-dark">
-          Birthday
+          Birthday:
         </li>
         <li key="rut" className="list-group-item ">
           {actor.birthday}
         </li>
         <li key="rdh" className="list-group-item list-group-item-dark">
-          Gender
+          Gender:
         </li>
         <li key="rdv" className="list-group-item ">
-          {actor.gender}
+          {actor.gender===1?("Female"):("Male")}
         </li>
       </ul>
 
-      {/* <ul className="list-group list-group-horizontal">
+      <ul className="list-group list-group-horizontal">
         <li key="gh" className="list-group-item list-group-item-dark">
-          Know as
+          Popularity
         </li>
-        {actor.as_known_as.map(g => (
-          <li key={g.name} className="list-group-item">
-            {g.name}
-          </li>
-        ))}
+        <li key="rdv" className="list-group-item ">
+          {actor.popularity}
+        </li>
       </ul>
       <ul className="list-group list-group-horizontal">
+      <li key="ruh" className="list-group-item list-group-item-dark">
+          Known_for_department:
+        </li>
+        <li key="rut" className="list-group-item ">
+          {actor.known_for_department}
+        </li>
+        </ul>
+      <ul className="list-group list-group-horizontal">
+      <li key="gh" className="list-group-item list-group-item-dark">
+          Biography
+        </li>
+        <li key="rdv" className="list-group-item ">
+          {actor.biography?actor.biography:("There is no Biography")}
+        </li>
+        </ul>
+      {/* <ul className="list-group list-group-horizontal">
         <li key="slh" className="list-group-item list-group-item-dark">
           Spoken Languages
         </li>
