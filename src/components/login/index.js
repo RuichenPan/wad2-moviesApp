@@ -28,13 +28,14 @@ const Login = () => {
     // Log in code here.
     firebase.auth().signInWithEmailAndPassword(user.email, user.password)
       .then( result => {
-        if (!result.user.emailVerified) {
-          setUser({
-            ...user,
-            error : 'Please verify your email before to continue' ,
-          })
-          firebase.auth().signOut();
-        }
+        // if (!result.user.emailVerified) {
+        //   setUser({
+        //     ...user,
+        //     error : 'Please verify your email before to continue' ,
+        //   })
+        //   firebase.auth().signOut();
+        // }
+        alert("Login!")
       })
       .catch( error => {
         // Update the error
@@ -47,13 +48,15 @@ const Login = () => {
  
   return (
     <>
-       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="d-flex flex-column">
+    <h1 className="mx-auto">Log In</h1>
+      <form onSubmit={handleSubmit} className="mx-auto">
         <input type="text" placeholder="Email" name="email" onChange={handleChange}/><br />
         <input type="password" placeholder="Password" name="password" onChange={handleChange}/><br />
         <button type="submit">Log in</button>
       </form>
       {user.error && <h4>{user.error}</h4>}
+    </div>
     </>
   )
 };
