@@ -23,11 +23,6 @@ const SiteHeader = () => {
   const menu = (
     <Menu>
     <Menu.Item>
-    <Link className="nav-link" to="/signup"> 
-        Sign Up
-        </Link>
-    </Menu.Item>
-    <Menu.Item>
     <Link className="nav-link" to="/login"> 
         Log In
         </Link>
@@ -45,6 +40,13 @@ const SiteHeader = () => {
       User <DownOutlined />
     </span>
   </Dropdown>
+  <ul className="navbar-nav">
+  <li className="nav-item">
+            <Link className="nav-link text-white" to="/signup">
+              Sign Up
+            </Link>
+          </li>
+          </ul>
       <nav className="navbar-brand text-white">
         <Link className=" text-white" to="/">
         <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="logo" width="200" height="50" />
