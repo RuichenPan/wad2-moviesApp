@@ -1,4 +1,4 @@
-import React from "react";
+import React , { lazy, Suspense  }from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom"    // CHANGED
 import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
@@ -8,24 +8,33 @@ import MoviePage from './pages/movieDetailsPage'
 import ActorPage from './pages/actorDetailsPage'
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
-import UpcomingPage from './pages/UpcomingPage'
+//import UpcomingPage from './pages/UpcomingPage'
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
 import ActorsContextProvider from "./contexts/actorsContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import AddActorReviewPage from './pages/addActorReviewPage'
-import TopRatedPage from './pages/topRatedPage';
-import similarMovie from './pages/similarMoviePage';
-import WatchListPage from './pages/watchListPage';
-import RecommendPage from './pages/RecommendPage';
-import NowPlayingMovisPage from './pages/NowPlayingPage';
-import PopularActorsPage from './pages/PopularActorPage';
-import LikeActors from './pages/ILikePage';
+// import TopRatedPage from './pages/topRatedPage';
+// import similarMovie from './pages/similarMoviePage';
+// import WatchListPage from './pages/watchListPage';
+// import RecommendPage from './pages/RecommendPage';
+// import NowPlayingMovisPage from './pages/NowPlayingPage';
+// import PopularActorsPage from './pages/PopularActorPage';
+// import LikeActors from './pages/ILikePage';
 import { FirebaseAppProvider } from 'reactfire' ;
 import firebaseConfig from './firebaseConfig' ;
 import SignUp from './components/signUp';
 import Login from './components/login';
 import 'antd/dist/antd.css';
+
+const UpcomingPage = lazy(() => import("./pages/UpcomingPage"));
+const TopRatedPage = lazy(() => import("./pages/topRatedPage"));
+const similarMovie = lazy(() => import("./pages/similarMoviePage"));
+const WatchListPage = lazy(() => import("./pages/watchListPage"));
+const RecommendPage = lazy(() => import("./pages/RecommendPage"));
+const NowPlayingMovisPage = lazy(() => import("./pages/NowPlayingPage"));
+const PopularActorsPage = lazy(() => import("./pages/PopularActorPage"));
+const LikeActors = lazy(() => import("./pages/ILikePage"));
 const App = () => {
   return (
     < FirebaseAppProvider firebaseConfig = {firebaseConfig} >
@@ -36,6 +45,7 @@ const App = () => {
           <MoviesContextProvider>
             <GenresContextProvider>    {/* NEW */}
             <ActorsContextProvider>
+            <Suspense fallback={<h1>Loading page....</h1>}>
             <Switch>
 
           <Route exact path="/reviews/form" component={AddMovieReviewPage} />
@@ -58,6 +68,7 @@ const App = () => {
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />
             </Switch>
+            </Suspense>
             </ActorsContextProvider>
             </GenresContextProvider>    {/* NEW */}
             </MoviesContextProvider>
