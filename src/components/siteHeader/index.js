@@ -34,7 +34,7 @@ const SiteHeader = () => {
 );
   return (
     <nav className="navbar  navbar-light fixed-top  bg-dark ">
-       <Dropdown overlay={menu}>
+       <Dropdown overlay={menu} trigger={['click']}>
 
     <span className="ant-dropdown-link text-primary" onClick={e => e.preventDefault()}>
       User <DownOutlined />
