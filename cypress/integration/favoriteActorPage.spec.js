@@ -24,7 +24,9 @@ describe("Favorite Actors Page ", () => {
 
   describe("Base tests", () => {
     it("displays page header", () => {
+      cy.wait(5000)
       cy.contains("Favorite Actors").click()
+      cy.wait(5000)
       cy.get("h2").contains("Favorite Actors");
     });
   });

@@ -27,12 +27,14 @@ describe("Watch List Page ", () => {
 
   describe("Base tests", () => {
     it("displays page header", () => {
+      cy.wait(5000)
       cy.contains("Watch List").click()
       cy.get("h2").contains("Watch List Movies");
     });
   });
   describe("Button test", () => {
     it("button should add movies to watch list page", () => {
+      cy.wait(5000)
       cy.get(".card").get(".btn-primary").eq(3).click();
       cy.contains("Watch List").click()
       cy.get(".card").should("have.length",1);
