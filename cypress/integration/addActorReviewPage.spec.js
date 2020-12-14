@@ -20,12 +20,6 @@ describe("Actor Review Page ", () => {
     cy.contains("Popular Actors").click()
   });
 
-  describe("Base tests", () => {
-    it("displays page header", () => {
-      cy.get(".card").get(".btn-primary").eq(3).click();
-      cy.get("h2").contains("Scarlett Johansson");
-    });
-  });
   describe("Text test", () => {
     it("Author input", () => {
       cy.get(".card").get(".btn-primary").eq(3).click();

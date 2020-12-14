@@ -40,7 +40,7 @@ describe("Movie Details Page", () => {
     cy.get("h4").contains("Overview");
     cy.get("h4").next().contains(movie.overview);
     cy.get("ul")
-      .eq(1)
+      .eq(2)
       .within(() => {
         cy.get("li").eq(0).contains("Runtime");
         cy.get("li").eq(1).contains(movie.runtime);
@@ -55,7 +55,7 @@ describe("Movie Details Page", () => {
       .should("include", movie.homepage);
   });
   it("should display the Image tag with the appropriate src attribute", () => {
-    cy.get("img")
+    cy.get(".col-3").get("img").eq(1)
       .should("have.attr", "src")
       .should("include", movie.poster_path);
   });

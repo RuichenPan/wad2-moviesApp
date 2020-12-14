@@ -14,6 +14,7 @@ let user;
       cy.get(".mx-auto").get("button").click()
       cy.contains("Favorites").click()
       cy.wait(5000);
+      cy.contains("Favorites").click()
       cy.url().should("include", `/movies/favorites`);
     });
     it("not display favorite page after logout", () => {
@@ -28,7 +29,7 @@ let user;
       cy.url().should("include", `login`);
     });
   });
-  describe("Base tests", () => {
+  describe("Sign up Base tests", () => {
     it("should sign up an account successfully", () => {
       cy.contains("Favorite").click()
       cy.get(".ant-dropdown-trigger").trigger("mouseover").get("button").click();//Logout

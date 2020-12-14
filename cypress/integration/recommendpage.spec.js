@@ -17,6 +17,12 @@ describe("Recommend Page ", () => {
   })
   beforeEach(() => {
     cy.visit("/")
+    cy.contains("Favorite").click()
+    cy.url().should("include", `login`);
+    cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
+    cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
+    cy.get(".mx-auto").get("button").click()
+    cy.contains("Home").click()
     cy.contains("Upcoming").click()
     cy.get(".card").get(".btn-primary").eq(0).click();
     cy.contains("Watch List").click()
