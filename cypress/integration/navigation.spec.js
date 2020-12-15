@@ -29,6 +29,7 @@ describe("Navigation", () => {
     beforeEach(() => {
       cy.visit("/");
       cy.contains("Favorite").click()
+      cy.wait(5000)
       cy.url().should("include", `login`);
       cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
