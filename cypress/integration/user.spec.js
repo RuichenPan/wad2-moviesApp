@@ -28,6 +28,7 @@ let user;
       cy.get("button").click();
       cy.contains("Favorite").click()
       cy.wait(1000)
+      cy.contains("Favorite").click()
       cy.url().should("include", `login`);
     });
   });
