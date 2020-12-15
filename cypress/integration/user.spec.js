@@ -24,8 +24,7 @@ let user;
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
       cy.get(".mx-auto").get("button").click()
       cy.contains("Favorites").click()
-      cy.get(".ant-dropdown-trigger").click()
-      cy.get("button").click();//Logout
+      cy.get("span").eq(0).click().get("button").click();
       cy.contains("Favorite").click()
       cy.url().should("include", `login`);
     });
@@ -41,8 +40,7 @@ let user;
       cy.get("input").eq(1).type(userName + "@gmail.com")
       cy.get("input").eq(2).type("123321")
       cy.get("button").eq(0).click()
-      cy.get(".ant-dropdown-trigger").click()
-      cy.get("button").eq(0).click();//Logout
+      cy.get("span").eq(0).click().get("button").eq(0).click();
       cy.wait(3000);
       cy.contains("Favorite").click()
       cy.wait(5000);
