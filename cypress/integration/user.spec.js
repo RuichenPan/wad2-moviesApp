@@ -11,7 +11,7 @@ let user;
       cy.url().should("include", `login`);
       cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-      cy.get(".mx-auto").get("button").click()
+      cy.get(".mx-auto").get("button").eq(1).click()
       cy.contains("Favorites").click()
       cy.wait(5000);
       cy.contains("Favorites").click()
@@ -22,40 +22,35 @@ let user;
       cy.url().should("include", `login`);
       cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-      cy.get(".mx-auto").get("button").click()
+      cy.get(".mx-auto").get("button").eq(1).click()
       cy.contains("Favorites").click()
-      cy.get("span").eq(0).click().get("button").eq(0).click();
+      cy.url().should("include", `favorites`);
+      cy.get("button").click();
       cy.contains("Favorite").click()
       cy.url().should("include", `login`);
     });
   });
-  // describe("Sign up Base tests", () => {
-  //   it("should sign up an account successfully", (done) => {
-  //     cy.on('uncaught:exception', (err, runnable) => {
-  //       expect(err.message).to.include('something about the error')
-  //       done()
-  //       return false
-  // })
-  //     cy.contains("Favorite").click()
-  //     cy.get(".ant-dropdown-trigger").click()
-  //     cy.get("button").eq(0).click();//Logout
-  //     cy.get(".nav-link").contains("Sign").click()
-  //     const userName = Math.random();
-  //     cy.get("input").eq(0).type(userName)
-  //     cy.get("input").eq(1).type(userName + "@gmail.com")
-  //     cy.get("input").eq(2).type("123321")
-  //     cy.get("button").eq(0).click()
-  //     cy.get("span").eq(0).click().get("button").eq(0).click();
-  //     cy.wait(3000);
-  //     cy.contains("Favorite").click()
-  //     cy.wait(5000);
-  //     cy.url().should("include", `login`);
-  //     cy.get(".mx-auto").eq(1).get("input").eq(0).click().type(userName + "@gmail.com")
-  //     cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-  //     cy.get(".mx-auto").get("button").eq(0).click()
-  //     cy.contains("Favorites").click()
-  //     cy.wait(5000);
-  //     cy.contains("Favorites").click()
-  //     cy.url().should("include", `/movies/favorites`);
-  //   });
-  // });
+  describe("Sign up Base tests", () => {
+    it("should sign up an account successfully", () => {
+      cy.contains("Favorite").click()
+      cy.get(".ant-dropdown-trigger").click()
+      cy.get("button").eq(0).click();//Logout
+      cy.get(".nav-link").contains("Sign").click()
+      const userName = Math.random();
+      cy.get("input").eq(0).type(userName)
+      cy.get("input").eq(1).type(userName + "@gmail.com")
+      cy.get("input").eq(2).type("123321")
+      cy.get("button").eq(1).click();
+      cy.wait(3000);
+      cy.contains("Favorite").click()
+      cy.wait(5000);
+      cy.url().should("include", `login`);
+      cy.get(".mx-auto").eq(1).get("input").eq(0).click().type(userName + "@gmail.com")
+      cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
+      cy.get(".mx-auto").get("button").eq(1).click()
+      cy.contains("Favorites").click()
+      cy.wait(5000);
+      cy.contains("Favorites").click()
+      cy.url().should("include",  `/movies/favorites`);
+    });
+  });

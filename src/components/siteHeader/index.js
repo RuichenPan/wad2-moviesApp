@@ -27,24 +27,28 @@ const SiteHeader = () => {
         Log In
         </Link>
     </Menu.Item>
-    <Menu.Item>
-      <button type="button" onClick={handleClick}>Log Out</button> 
-    </Menu.Item>
   </Menu>
 );
   return (
     <nav className="navbar  navbar-light fixed-top  bg-dark ">
        <Dropdown overlay={menu} trigger={['click']}>
-
-    <span className="ant-dropdown-link text-primary" onClick={e => e.preventDefault()}>
-      User <DownOutlined />
-    </span>
-  </Dropdown>
+         <span className="ant-dropdown-link text-primary" onClick={e => e.preventDefault()}>
+           User
+      <DownOutlined />
+         </span>
+      </Dropdown>
   <ul className="navbar-nav">
   <li className="nav-item">
             <Link className="nav-link text-white" to="/signup">
               Sign Up
             </Link>
+          </li>
+          </ul>
+          <ul className="navbar-nav">
+  <li className="nav-item">
+            
+            <button type="button" onClick={handleClick}>Log Out</button> 
+            
           </li>
           </ul>
       <nav className="navbar-brand text-white">

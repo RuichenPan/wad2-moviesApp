@@ -28,18 +28,18 @@ describe("Actor Review Page ", () => {
     });
     it("empty author input", () => {
       cy.get(".card").get(".btn-primary").eq(3).click();
-      cy.get("button").eq(1).click();
+      cy.get("button").eq(2).click();
       cy.get("p").eq(0).contains("Author name required");
       });
     it("empty review input", () => {
       cy.get(".card").get(".btn-primary").eq(3).click();
-      cy.get("button").eq(1).click();
+      cy.get("button").eq(2).click();
       cy.get("p").eq(1).contains("No review text");
     });
     it("not enough review input", () => {
       cy.get(".card").get(".btn-primary").eq(3).click();
       cy.get(".form-control").eq(1).type("good");
-      cy.get("button").eq(1).click();
+      cy.get("button").eq(2).click();
       cy.get("p").eq(1).contains("Review is too short");
     });
     

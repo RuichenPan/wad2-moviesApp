@@ -33,7 +33,7 @@ describe("Navigation", () => {
       cy.url().should("include", `login`);
       cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-      cy.get(".mx-auto").get("button").click()
+      cy.get(".mx-auto").get("button").eq(1).click()
       cy.contains("Home").click()
     });
     it("should navigate to the movie details page and change browser URL", () => {
@@ -42,34 +42,18 @@ describe("Navigation", () => {
       cy.get("h2").contains(movies[1].title);
     });
     it("should allow navigation from site header", () => {
-      cy.get("nav").find("li").eq(3).find("a").click();
+      cy.get("nav").find("li").eq(4).find("a").click();
       cy.url().should("include", `/favorites`);
       cy.get("h2").contains("Favorite Movies");
-      cy.get("nav").find("li").eq(2).find("a").click();
+      cy.get("nav").find("li").eq(3).find("a").click();
       cy.url().should("not.include", `/favorites`);
       cy.get("h2").contains("Upcoming Movies");
-      cy.get("nav").find("li").eq(3).find("a").click();
+      cy.get("nav").find("li").eq(4).find("a").click();
       cy.get("nav.navbar-brand").find("a").click();
       cy.url().should("not.include", `/favorites`);
       cy.get("h2").contains("All Movies");
     });
   });
-  // describe("From the Movie Details page ", () => {
-  //   beforeEach(() => {
-  //     cy.visit(`/movies/${movieId}`);
-  //   });
-  //   it("should change browser URL when show/hide reviews is clicked", () => {
-  //     cy.contains("Show Reviews").click();
-  //     cy.url().should("include", `/movies/${movieId}/reviews`);
-  //     cy.contains("Hide Reviews").click();
-  //     cy.url().should("not.include", `/movies/${movieId}/reviews`);
-  //   });
-  //   it("navigate to the full review page when a 'Full Review' link is clicked", () => {
-  //       cy.contains("Show Reviews").click();
-  //       cy.contains("Full Review").click();
-  //       cy.url().should("include", `/reviews/${reviews[0].id}`);
-  //   });
-  // });
   describe("From the Favorites page", () => {
     beforeEach(() => {
       cy.visit("/");
@@ -77,10 +61,10 @@ describe("Navigation", () => {
       cy.url().should("include", `login`);
       cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-      cy.get(".mx-auto").get("button").click()
+      cy.get(".mx-auto").get("button").eq(1).click()
       cy.contains("Home").click()
       cy.get(".card").eq(0).find("button").click();
-      cy.get("nav").find("li").eq(3).find("a").click();
+      cy.get("nav").find("li").eq(4).find("a").click();
     });
     it("should navigate to the movies detail page and change the browser URL", () => {
       cy.wait(1000);
@@ -96,7 +80,7 @@ describe("Navigation", () => {
       cy.url().should("include", `login`);
       cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
       cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-      cy.get(".mx-auto").get("button").click()
+      cy.get(".mx-auto").get("button").eq(1).click()
       cy.contains("Home").click()
     });
     it("should navigate from home page to movie details and back", () => {
@@ -108,7 +92,7 @@ describe("Navigation", () => {
     });
     it("should navigate from favorites page to movie details and back", () => {
         cy.get(".card").eq(0).find("button").click();
-        cy.get("nav").find("li").eq(3).find("a").click();
+        cy.get("nav").find("li").eq(4).find("a").click();
         cy.get(".card").eq(0).find("img").click();
         cy.wait(1000);
         cy.get("svg[data-icon=arrow-circle-left]").click({force: true});
