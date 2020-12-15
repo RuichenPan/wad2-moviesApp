@@ -5,13 +5,19 @@ import MovieCard from "../src/components/movieCard";
 import FilterControls from "../src/components/filterControls";
 import MoviesHeader from "../src/components/headerMovieList";
 import MovieList from "../src/components/movieList";
+import ActorList from "../src/components/actorList";
 import MovieDetails from "../src/components/movieDetails";
+import ActorDetails from "../src/components/actorDetails";
 import MovieHeader from "../src/components/headerMovie";
-import AddFavoriteButton from "../src/components/buttons/addToFavorites";
+import ActorHeader from "../src/components/headerActor";
+import ActorHeaderList from "../src/components/headerActorList";
+import TemplateActorListPage from "../src/components/templateActorListPage";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
 import SiteHeader from "../src/components/siteHeader"
+import ActorCard from "../src/components/actorCard"
+import { ControlTwoTone } from "@ant-design/icons";
 const sample = {
   adult: false,
   backdrop_path: "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
@@ -93,6 +99,20 @@ const sample = {
   vote_count: 9692
 };
 
+const actor = {
+  adult: false,
+  gender: 1,
+  id: 1734,
+  known_for_department: "Acting",
+  name: "Annette O'Toole",
+  popularity: 56.83,
+  profile_path: "/z5BS5EeuhpM2KGFfUjOhVXtjmMy.jpg",
+  birthday: "1952-04-01",
+  deathday: null,
+  homepage: null,
+  imdb_id: "nm0001578",
+  place_of_birth: "Houston, Texas, USA",
+}
 storiesOf("Home Page/MovieCard", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
@@ -160,4 +180,53 @@ storiesOf("Home Page/SiteHeader", module)
   ))
   .add("default", () => (
   <SiteHeader />
+  ));
+  storiesOf("Popular Actor/ActorCard", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <ActorCard
+      actor={actor}
+      action={actor => <button className="btn w-100 btn-primary">Test</button>}
+    />
+  ))
+  storiesOf("Popular Actor/ActorList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const actors = [actor, actor, actor, actor, actor];
+    return (
+      <ActorList
+      actors={actors}
+        action={actor => (
+          <button className="btn w-100 btn-primary">Test</button>
+        )}
+      />
+    );
+  });
+  storiesOf("Actor Details Page/ActorDetails", module).add("default", () => (
+    <ActorDetails actor={actor} />
+  ));
+  storiesOf("Actor Details Page/Header", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <ActorHeader actor={actor} />
+  ));
+  storiesOf("Actor Details Page/HeaderList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <ActorHeaderList name="Test Header" />
+  ));
+  storiesOf("Actor List Page/Template Actor List", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <TemplateActorListPage name="Test Actor" actors={[actor,actor,actor,actor]} action={()=>{}} />
   ));
