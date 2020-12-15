@@ -27,6 +27,7 @@ let user;
       cy.url().should("include", `favorites`);
       cy.get("button").click();
       cy.contains("Favorite").click()
+      cy.wait(1000)
       cy.url().should("include", `login`);
     });
   });
