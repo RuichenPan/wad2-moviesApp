@@ -20,7 +20,7 @@ describe("Watch List Page ", () => {
     cy.url().should("include", `login`);
     cy.get(".mx-auto").eq(1).get("input").eq(0).click().type("abc@qq.com")
     cy.get(".mx-auto").eq(1).get("input").eq(1).click().type("123321")
-    cy.get(".mx-auto").get("button").click()
+    cy.get(".mx-auto").get("button").eq(1).click()
     cy.contains("Home").click()
     cy.contains("Upcoming").click()
   });
