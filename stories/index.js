@@ -17,7 +17,10 @@ import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
 import SiteHeader from "../src/components/siteHeader"
 import ActorCard from "../src/components/actorCard"
-import { ControlTwoTone } from "@ant-design/icons";
+import Login from "../src/components/login"
+import { FirebaseAppProvider } from 'reactfire' ;
+import firebaseConfig from '../src/firebaseConfig' ;
+import Signup from "../src/components/signUp"
 const sample = {
   adult: false,
   backdrop_path: "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
@@ -229,4 +232,24 @@ storiesOf("Home Page/SiteHeader", module)
   ))
   .add("default", () => (
     <TemplateActorListPage name="Test Actor" actors={[actor,actor,actor,actor]} action={()=>{}} />
+  ));
+  storiesOf("User/Login", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .addDecorator(story => (
+    < FirebaseAppProvider firebaseConfig = {firebaseConfig} >{story()}</FirebaseAppProvider>
+  ))
+  .add("default", () => (
+    <Login />
+  ));
+  storiesOf("User/Signup", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .addDecorator(story => (
+    < FirebaseAppProvider firebaseConfig = {firebaseConfig} >{story()}</FirebaseAppProvider>
+  ))
+  .add("default", () => (
+    <Signup />
   ));
