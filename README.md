@@ -65,6 +65,9 @@ User 'npm install' to download node_modules
 ![][NowPlayingMovies]
 >Shows the Now Playing movies.Users can view the now playing movies list here and  can check the similar movies from clicking the button
 
+![][TopRatedMovies]
+>Shows the Top Rated movies.Users can view the now playing movies list here and  can check the similar movies from clicking the button
+
 ![][WatchList]
 >Shows the Watch List Movie Page.The moveis got from the user's click in the Upcoming page
 
@@ -147,8 +150,91 @@ Reference
 1. Blog.csdn.net. 2020. Firebase Login Authentication. [online] Available at: <https://blog.csdn.net/dfsgwe1231/article/details/107258662> [Accessed 16 December 2020].
 2. Ant.design. 2020. Component Overview - Ant Design. [online] Available at: <https://ant.design/components/overview-cn/> [Accessed 16 December 2020].
 ---------------------------------
+# Assignment 1 - Agile Software Practice.
+
+Name: Ruichen Pan
+
+## App Features.
+
+ 
++ Upcoming Movies page - Shows the upcoming movies. The header of this page should be Upcoming Movies. The movie title filter and genre function should run successfully.
+
+Tests: cypress/integration/upcoming.spec.js
+
+![][UpcomingMovies]
+
++ Top Rated page - Shows the top rated movies. The header of this page should be Top Rated Movies. The movie title filter and genre function should run successfully.
+
+Tests: cypress/integration/topRatedPage.spec.js 
+
+![][TopRatedMovies]
+
++ Now Playing page - Shows the Now Playing Movies. The header of this page should be Now Playing Movies. The movie title filter and genre function should run successfully.
+  
+Tests: cypress/integration/nowPlaying.spec.js 
+
+![][NowPlaying]
+
++ Similar Movies page - Shows the Similar Movies. When it comes to top rated page or now playing movie page first, click the check similar page button, then it will navigate to similar movie page with the hearder of Similar Movies.And the url should contain the movie id.
+  
+Tests: cypress/integration/similar.spec.js 
+
+![][SimilarMovies]
+
++ Recommend Movies page - Shows the Recommend Movies. When it comes to upcoming movie page first, add some movies into watchlist page.Before enter into the watchlist page, the login is needed.Then in Recommend Page, click the 'check recommend movie' button.Then the url should contain /recommendMovie/:id and display the recommend movies.
+  
+Tests: cypress/integration/recommendpage.spec.js 
+
+![][RecommendMovies]
+
++ Watchlist Movies page - Shows the movies in WatchList. When it comes to upcoming movie page first, add some movies into watchlist page.Before enter into the watchlist page, the login is needed.Click the watch list in the navigation bar, the header should be Watch List Movies.If add one movie in to the watchlist, then the length of movies in watchlist page should be 1.
+  
+Tests: cypress/integration/watchListPage.spec.js 
+
+![][WatchList]
+
++ User Test - The favorite page should be viewed after users authentication which means users cannot view this page before login and after logout.When click the Favorites in the navigation before login or after logout then the page will show the login page.
+  
+Tests: cypress/integration/user.spec.js 
+
+![][Login]
+
++ PopularActor - Shows the Popular Actors. The header of this page should be Popular People after clicking Popular Actors in the navigation bar. If adding two actors into favorite actors then the length should decrease to 18.
+  
+Tests: cypress/integration/PopularActor.spec.js 
+
+![][PopularActors]
+
++ Favorite Actors page - Shows the actors in Favorite Actors. The header will show Favorite Actors. This page can also remove the actors back to popular people list.
+  
+Tests: cypress/integration/favoriteActorPage.spec.js 
+
+![][FavoriteActors]
+
++ Add Actor Review page - Click the Write a Review button in the actor card. Then the header of this page should be the name of this actor. The author and text should not be empty and the length of review could not be too short.
+  
+Tests: cypress/integration/addActorReviewPage.spec.js 
+
+![][ActorReviews]
+
+## Testing.
+
+Cypress Dashboard URL:https://dashboard.cypress.io/projects/c8y1cf/runs?branches=%5B%5D&committers=%5B%5D&flaky=%5B%5D&page=1&status=%5B%5D&tags=%5B%5D&timeRange=%7B%22startDate%22%3A%221970-01-01%22%2C%22endDate%22%3A%222038-01-19%22%7D
+
+### Advanced Testing (If required).
+
+[State briefly each instances of boundary and/or error/exceptional test case in your project]
+e.g.
+
++ cypress/integration/movieReviewPage.spec.js - test the movieReview page when the Review author and review content are empty or the review is too short.
++ cypress/integration/user.spec.js - test when users want to enter in the favorite page if users did not login
+
+---------------------------------
 
 [stories]: ./public/Storybook.png
+[TopRatedMovies]: ./public/TopRated.png
+[UpcomingMovies]: ./public/UpcomingMovies.png
+[NowPlaying]: ./public/NowPlaying.png
 [ActorDetails]: ./public/ActorDetails.png
 [ActorReviews]: ./public/ActorReviews.png
 [PopularActorPageButtons]: ./public/ButtonsinPopularActors.png
