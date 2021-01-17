@@ -1,11 +1,10 @@
 import React, { useState } from 'react' ;
-import { useFirebaseApp } from 'reactfire' ;
-import 'firebase/auth'
- 
+import {MovieLogin} from '../../api/tmdb-api'; 
+
 const Login = () => {
   // User State
   const [user, setUser] = useState({
-    email : '' ,
+    username : '' ,
     password : '' ,
     error : '' ,
   });
@@ -20,21 +19,15 @@ const Login = () => {
   };
  
   // Import firebase
-  const firebase = useFirebaseApp();
  
   // Submit function (Log in user)
   const handleSubmit = e => {
     e.preventDefault();
     // Log in code here.
-    firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+
+    MovieLogin(user.username,user.password)
       .then( result => {
-        // if (!result.user.emailVerified) {
-        //   setUser({
-        //     ...user,
-        //     error : 'Please verify your email before to continue' ,
-        //   })
-        //   firebase.auth().signOut();
-        // }
+
         alert("Login!")
       })
       .catch( error => {
@@ -51,7 +44,7 @@ const Login = () => {
     <div className="d-flex flex-column">
     <h1 className="mx-auto">Log In</h1>
       <form onSubmit={handleSubmit} className="mx-auto">
-        <input type="text" placeholder="Email" name="email" onChange={handleChange}/><br />
+        <input type="text" placeholder="username" name="username" onChange={handleChange}/><br />
         <input type="password" placeholder="Password" name="password" onChange={handleChange}/><br />
         <button type="submit">Log in</button>
       </form>
